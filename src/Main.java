@@ -10,8 +10,13 @@ class HwMethods {
         byte typeOS = 0;
         suggestVersion(typeOS, clientDeviceYear);        //Задача 2
         separate();
-        short deliveryDistance = 95;
-        calculateDeliveryTime(deliveryDistance); //Задача 3
+        System.out.println("Задача 3:");
+        short deliveryDistance = 95;                //Задача 3
+        if (calculateDeliveryTime(deliveryDistance) == 0) {
+            System.out.println("Доставка не осуществляется.");
+        } else {
+            System.out.println("Для доставки потребуется дней: " + calculateDeliveryTime(deliveryDistance));
+        }
         separate();
     }
     // Метод первой задачи
@@ -40,16 +45,15 @@ class HwMethods {
     }
 
     // Метод третьей задачи
-    public static void calculateDeliveryTime(short distance) {
-        System.out.println("Задача 3:");
+    public static int calculateDeliveryTime(short distance) {
         byte time = 1;
         if (distance < 20) {
-            System.out.println("Для доставки потребуется " + time + " день.");
+            return time;
         } else if (distance >= 20 && distance < 60){
-            System.out.println("Для доставки потребуется " + (time +1) + " дня.");
+            return time + 1;
         } else if (distance >= 60 && distance < 100) {
-            System.out.println("Для доставки потребуется " + (time +2) + " дня.");
-        } else System.out.println("Доставка не осуществляется.");
+            return time + 2;
+        } else return 0;
     }
 
     public static void separate() {
